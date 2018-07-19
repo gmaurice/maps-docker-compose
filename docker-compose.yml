@@ -137,10 +137,10 @@ services:
     command: apache2
     volumes:
       - data:/data
+      - run:/run
       - ./nominatim-apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
       - ./nominatim-apache/local.php:/Nominatim/build/settings/local.php
     tmpfs:
-      - /run
       - /tmp
     ports:
       - 8002:80

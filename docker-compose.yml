@@ -89,6 +89,8 @@ services:
     volumes:
       - data:/data
       - ./osrm-backend/osrm-routed.sh:/usr/local/bin/osrm-routed.sh
+      - ./osrm-backend/opt/car.lua:/opt/car.lua
+      - ./osrm-backend/opt/lib:/opt/lib
     tmpfs:
       - /run
       - /tmp

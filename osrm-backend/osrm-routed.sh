@@ -46,8 +46,6 @@ if [ "$REDOWNLOAD" -o ! -f /data/"$OSM_PBF" -a "$OSM_PBF_URL" ]; then
 		su-exec osrm md5sum -c "$OSM_PBF".md5 || exit 1
 fi
 
-sleep 9999999999
-
 if [ "$REDOWNLOAD" -o "$REEXTRACT" -o ! -f /data/profile/"$PROFILE_DIR"/"$OSM_OSRM" ]; then
 	if [ ! -d /data/"$PROFILE_DIR" ]; then
 		su-exec osrm mkdir -p /data/profile/"$PROFILE_DIR"

@@ -53,7 +53,7 @@ if [ "$REDOWNLOAD" -o "$REEXTRACT" -o ! -f /data/profile/"$PROFILE_DIR"/"$OSM_OS
 	su-exec osrm osrm-extract -p "$PROFILE" /data/"$OSM_PBF" && \
 		su-exec osrm osrm-partition /data/"$OSM_OSRM" && \
 		su-exec osrm osrm-customize /data/"$OSM_OSRM" && \
-		mv /data/"$OSM_PBF".osrm* /data/profile/"$PROFILE_DIR"
+		mv /data/"$OSM_OSRM".* /data/profile/"$PROFILE_DIR"
 fi
 
 cd /

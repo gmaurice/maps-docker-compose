@@ -111,8 +111,6 @@ services:
     tmpfs:
       - /run
       - /tmp
-    ports:
-      - 8001:9966
 
   vroom:
     image: hammermc/vroom-docker
@@ -134,7 +132,7 @@ services:
     environment:
       - http_proxy
       - https_proxy
-    command: apache2
+    command: nominatim-apache2
     volumes:
       - data:/data
       - run:/run
@@ -142,8 +140,6 @@ services:
       - ./nominatim-apache/local.php:/Nominatim/build/settings/local.php
     tmpfs:
       - /tmp
-    ports:
-      - 8002:80
     depends_on:
       - nominatim-initdb
 
@@ -152,7 +148,7 @@ services:
   nominatim-initdb:
     image: hammermc/nominatim-docker
     restart: "no"
-    command: initdb
+    command: nominatim-initdb
     env_file:
       - osm.env
     environment:

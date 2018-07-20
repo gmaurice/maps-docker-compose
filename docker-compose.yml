@@ -29,6 +29,7 @@ services:
     command: renderd-initdb
     volumes:
       - data:/data
+      - ./osm-config.sh:/usr/local/etc/osm-config.sh
     tmpfs:
       - /run
       - /tmp
@@ -47,6 +48,7 @@ services:
     volumes:
       - data:/data
       - ./renderd/renderd.conf:/etc/renderd.conf
+      - ./osm-config.sh:/usr/local/etc/osm-config.sh
     tmpfs:
       - /run
       - /tmp
@@ -66,6 +68,7 @@ services:
       - data:/data
       - ./renderd/renderd.conf:/etc/renderd.conf
       - ./renderd-apache/tileserver_site.conf:/etc/apache2/sites-available/tileserver_site.conf
+      - ./osm-config.sh:/usr/local/etc/osm-config.sh
     tmpfs:
       - /run
       - /tmp
@@ -83,12 +86,15 @@ services:
       - https_proxy
       - NPROCS
       - PROFILE
+      - REDOWNLOAD
+      - REEXTRACT
     depends_on:
       - postgres
       - renderd
     volumes:
       - data:/data
       - ./osrm-backend/osrm-routed.sh:/usr/local/bin/osrm-routed.sh
+      - ./osm-config.sh:/usr/local/etc/osm-config.sh
     tmpfs:
       - /run
       - /tmp

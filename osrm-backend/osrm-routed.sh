@@ -29,7 +29,9 @@ if ! id osrm &> /dev/null; then
 	adduser -D osrm &> /dev/null
 fi
 
-. /data/config.sh
+if [ -f /usr/local/etc/osm-config.sh ]; then
+	. /usr/local/etc/osm-config.sh
+fi
 
 : ${PROFILE:=/opt/car.lua}
 : ${PROFILE_DIR:=$(basename "$PROFILE" .lua)}

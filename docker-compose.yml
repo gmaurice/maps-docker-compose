@@ -136,7 +136,7 @@ services:
     environment:
       - http_proxy
       - https_proxy
-    command: apache2
+    command: nominatim-apache2
     volumes:
       - data:/data
       - run:/run
@@ -154,7 +154,7 @@ services:
   nominatim-initdb:
     image: hammermc/nominatim-docker
     restart: "no"
-    command: initdb
+    command: nominatim-initdb
     env_file:
       - osm.env
     environment:

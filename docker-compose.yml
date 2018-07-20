@@ -69,6 +69,8 @@ services:
     tmpfs:
       - /run
       - /tmp
+    ports:
+      - 8082:80
 
   osrm-backend:
     image: osrm/osrm-backend
@@ -94,6 +96,8 @@ services:
     tmpfs:
       - /run
       - /tmp
+    ports:
+      - 5000:5000
 
   osrm-frontend:
     image: osrm/osrm-frontend
@@ -114,7 +118,7 @@ services:
       - /run
       - /tmp
     ports:
-      - 8001:9966
+      - 5002:9966
 
   vroom:
     image: hammermc/vroom-docker
@@ -127,6 +131,8 @@ services:
     tmpfs:
       - /run
       - /tmp
+    ports:
+      - 3000:3000
 
   nominatim-apache:
     image: hammermc/nominatim-docker

@@ -14,9 +14,19 @@
 @define('CONST_Default_Lat', -24.9932483);
 @define('CONST_Default_Lon', 115.2323916);
 @define('CONST_Default_Zoom', 4);
+<<<<<<< HEAD
 @define('CONST_Map_Tile_URL', 'http://renderd.internal.kkts.com.au/osm_tiles/{z}/{x}/{y}.png');
+=======
+@define('CONST_Map_Tile_URL', 'http://maps.localnet:8000/osm_tiles/{z}/{x}/{y}.png');
+>>>>>>> 8d8ce12f404f2f192c6b6d583b4df31965d58636
 @define('CONST_Map_Tile_Attribution', 'hammer'); // Set if tile source isn't osm.org
 
 @define('CONST_Log_File', '/data/nominatim/mominatim.log');
 
+<<<<<<< HEAD
 # @define('CONST_Database_DSN', 'pgsql://postgres@postgres/nominatim');
+=======
+
+// if you put your postgres password here, nominatim-apache doesn't need to share the run volume with postgres
+// @define('CONST_Database_DSN', 'pgsql://postgres:supersecret@postgres/nominatim');
+>>>>>>> 8d8ce12f404f2f192c6b6d583b4df31965d58636

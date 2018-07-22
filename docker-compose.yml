@@ -31,6 +31,7 @@ services:
     command: renderd-initdb
     volumes:
       - data:/data
+      - ./osm-config.sh:/usr/local/etc/osm-config.sh
     tmpfs:
       - /run
       - /tmp
@@ -49,6 +50,7 @@ services:
     volumes:
       - data:/data
       - ./renderd/renderd.conf:/etc/renderd.conf
+      - ./osm-config.sh:/usr/local/etc/osm-config.sh
     tmpfs:
       - /run
       - /tmp
@@ -68,6 +70,7 @@ services:
       - data:/data
       - ./renderd/renderd.conf:/etc/renderd.conf
       - ./renderd-apache/tileserver_site.conf:/etc/apache2/sites-available/tileserver_site.conf
+      - ./osm-config.sh:/usr/local/etc/osm-config.sh
     tmpfs:
       - /run
       - /tmp
@@ -87,6 +90,8 @@ services:
       - https_proxy
       - NPROCS
       - PROFILE
+      - REDOWNLOAD
+      - REEXTRACT
     depends_on:
       - postgres
       - renderd
@@ -95,6 +100,7 @@ services:
       - ./osrm-backend/osrm-routed.sh:/usr/local/bin/osrm-routed.sh
       - ./osrm-backend/opt/car.lua:/opt/car.lua
       - ./osrm-backend/opt/lib:/opt/lib
+      - ./osm-config.sh:/usr/local/etc/osm-config.sh
     tmpfs:
       - /run
       - /tmp
@@ -152,8 +158,6 @@ services:
       - ./nominatim-apache/local.php:/Nominatim/build/settings/local.php
     tmpfs:
       - /tmp
-    ports:
-      - 8002:80
     depends_on:
       - nominatim-initdb
 

@@ -160,6 +160,7 @@ services:
       - /tmp
     depends_on:
       - nominatim-initdb
+      - nominatim-updatedb
 
 # nominatim shares the /run directory with the postgres container
 # because it only connects to postgres via a socket during import
@@ -174,6 +175,21 @@ services:
       - REINITDB
       - http_proxy
       - https_proxy
+    volumes:
+      - data:/data
+      - run:/run
+    tmpfs:
+      - /tmp
+    depends_on:
+      - postgres
+
+#  edit apache/local.php for correct update settings
+  nominatim-updatedb:
+    image: hammermc/nominatim-docker
+    restart: "no"
+    command: nominatim-updatedb
+    env_file:
+      - osm.env
     volumes:
       - data:/data
       - run:/run

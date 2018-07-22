@@ -13,6 +13,8 @@ services:
       - run:/run
     tmpfs:
       - /tmp
+    ports:
+      - 5432:5432
 
   renderd-initdb:
     image: hammermc/renderd-docker

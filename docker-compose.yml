@@ -161,6 +161,8 @@ services:
     depends_on:
       - nominatim-initdb
       - nominatim-updatedb
+    ports:
+      - 5003:80
 
 # nominatim shares the /run directory with the postgres container
 # because it only connects to postgres via a socket during import

@@ -38,6 +38,9 @@ potentially hammering the servers hosting the large files.
 The osrm-backend on container on startup will detect if the binary has updated with a 
 `docker-compose pull` and regenerate the osrm storage files.
 
+Ensure you have **IPV6 enabled** on your host, even if you don't use it. IPV6 is mandatory
+for running renderd.
+
 If you `grep -r maps.localnet *` in the `maps-docker-compose` directory, you'll see every file 
 you'll need to edit if you want to assign a domain name. Otherwise for testing you can edit
 your `/etc/hosts` file with (ie) `127.0.0.1 maps.localnet nominatim.maps.localnet` if your browser
